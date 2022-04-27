@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+		PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+		"http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+
+	<context id="ctx" targetRuntime="MyBatis3">
+		<!-- 生成的Java文件的编码 -->
+		<property name="javaFileEncoding" value="UTF-8"/>
+
+		<!--<context id="ctx" targetRuntime="MyBatis3" >defaultModelType="conditional">-->
+		<!--<plugin type="plugin.SelectByPagePlugin"/>-->
+		<!--此处是将Example改名为Criteria 当然 想改成什么都行~ -->
+		<plugin type="org.mybatis.generator.plugins.RenameExampleClassPlugin">
+			<property name="searchString" value="Example"/>
+			<property name="replaceString" value="Criteria"/>
+		</plugin>
+
+		<!--&lt;!&ndash; 使用lombok插件@Data注解, 因此忽略生成get, set方法 &ndash;&gt;-->
+		<!--<plugin type="com.dt.mybatis.generator.config.IgnoreSetterAndGetterPlugin"/>-->
+
+		<!--&lt;!&ndash; 定制代码生成器注解 &ndash;&gt;-->
+		<!--<commentGenerator type="com.dt.mybatis.generator.config.CustomCommentGenerator"/>-->
+
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+		                connectionURL="jdbc:mysql://localhost:3306/statical_city_crop?generateSimpleParameterMetadata=true&amp;useSSL=false"
+		                userId="root" password="Lc123456@">
+		</jdbcConnection>
+
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="true"/>
+		</javaTypeResolver>
+
+		<!-- targetProject:自动生成代码的位置 -->
+		<javaModelGenerator targetPackage="com.lc.studyredis.model" targetProject="src/main/java">
+			<property name="enableSubPackages" value="true"/>
+			<property name="trimStrings" value="true"/>
+		</javaModelGenerator>
+
+		<sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources">
+			<property name="enableSubPackages" value="true"/>
+		</sqlMapGenerator>
+
+		<javaClientGenerator type="XMLMAPPER" targetPackage="com.lc.studyredis.mapper"
+		                     targetProject="src/main/java">
+			<property name="enableSubPackages" value="true"/>
+		</javaClientGenerator>
+
+		<!-- tableName:用于自动生成代码的数据库表；domainObjectName:对应于数据库表的javaBean类名 -->
+		<!--<table tableName="crop" domainObjectName="CropDO"-->
+		<!--       enableCountByExample="false"-->
+		<!--       enableUpdateByExample="false"-->
+		<!--       enableDeleteByExample="false"-->
+		<!--       enableSelectByExample="false"-->
+		<!--       selectByExampleQueryId="false">-->
+		<!--	<generatedKey column="id" sqlStatement="MySql" identity="false"/>-->
+		<!--	&lt;!&ndash; ts字段为记录最后更新时间, 由系统自动更新, 业务代码不使用. 主要用于大数据集市抽数. 因此代码生成器忽略该字段 &ndash;&gt;-->
+		<!--	<ignoreColumn column="ts"/>-->
+		<!--</table>-->
+		<table tableName="city" domainObjectName="CityDO"
+		       enableCountByExample="false"
+		       enableUpdateByExample="false"
+		       enableDeleteByExample="false"
+		       enableSelectByExample="false"
+		       selectByExampleQueryId="false">
+			<generatedKey column="id" sqlStatement="MySql" identity="false"/>
+			<!-- ts字段为记录最后更新时间, 由系统自动更新, 业务代码不使用. 主要用于大数据集市抽数. 因此代码生成器忽略该字段 -->
+			<ignoreColumn column="ts"/>
+		</table>
+		<!--<table tableName="USER_ACCOUNT" domainObjectName="UserAccountDO"-->
+		<!--       enableCountByExample="false"-->
+		<!--       enableUpdateByExample="false"-->
+		<!--       enableDeleteByExample="false"-->
+		<!--       enableSelectByExample="false"-->
+		<!--       selectByExampleQueryId="false">-->
+		<!--	<generatedKey column="id" sqlStatement="MySql" identity="false"/>-->
+		<!--	&lt;!&ndash; ts字段为记录最后更新时间, 由系统自动更新, 业务代码不使用. 主要用于大数据集市抽数. 因此代码生成器忽略该字段 &ndash;&gt;-->
+		<!--	<ignoreColumn column="ts"/>-->
+		<!--</table>-->
+		<!--<table tableName="city" domainObjectName="CityDO"-->
+		<!--       enableCountByExample="false"-->
+		<!--       enableUpdateByExample="false"-->
+		<!--       enableDeleteByExample="false"-->
+		<!--       enableSelectByExample="false"-->
+		<!--       selectByExampleQueryId="false">-->
+		<!--	<generatedKey column="id" sqlStatement="MySql" identity="false"/>-->
+		<!--	<ignoreColumn column="ts"/>-->
+		<!--</table>-->
+		<!--<table tableName="fishery_table" domainObjectName="FisheryDO"-->
+		<!--       enableCountByExample="false"-->
+		<!--       enableUpdateByExample="false"-->
+		<!--       enableDeleteByExample="false"-->
+		<!--       enableSelectByExample="false"-->
+		<!--       selectByExampleQueryId="false">-->
+		<!--	<generatedKey column="id" sqlStatement="MySql" identity="false"/>-->
+		<!--	<ignoreColumn column="ts"/>-->
+		<!--</table>-->
+		<!--<table tableName="rice_table" domainObjectName="RiceDO"-->
+		<!--       enableCountByExample="false"-->
+		<!--       enableUpdateByExample="false"-->
+		<!--       enableDeleteByExample="false"-->
+		<!--       enableSelectByExample="false"-->
+		<!--       selectByExampleQueryId="false">-->
+		<!--	<generatedKey column="id" sqlStatement="MySql" identity="false"/>-->
+		<!--	<ignoreColumn column="ts"/>-->
+		<!--</table>-->
+		<!--<table tableName="wheat_table" domainObjectName="WheatDO"-->
+		<!--       enableCountByExample="false"-->
+		<!--       enableUpdateByExample="false"-->
+		<!--       enableDeleteByExample="false"-->
+		<!--       enableSelectByExample="false"-->
+		<!--       selectByExampleQueryId="false">-->
+		<!--	<generatedKey column="id" sqlStatement="MySql" identity="false"/>-->
+		<!--	<ignoreColumn column="ts"/>-->
+		<!--</table>-->
+
+	</context>
+</generatorConfiguration>
