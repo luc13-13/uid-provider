@@ -1,4 +1,4 @@
-package com.lc.projectname;
+package com.lc.uid.provider;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
