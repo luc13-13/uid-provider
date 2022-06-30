@@ -1,5 +1,6 @@
 package com.lc.uid.provider.web;
 
+import com.lc.uid.provider.feign.TestFeignUid;
 import com.lc.uid.provider.service.UidGeneratorService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,12 +16,20 @@ import org.springframework.web.bind.annotation.RestController;
 public class ServiceController {
     private final UidGeneratorService uidGenerator;
 
-    public ServiceController(UidGeneratorService uidGenerator) {
+    private final TestFeignUid testFeignUid;
+
+    public ServiceController(UidGeneratorService uidGenerator, TestFeignUid testFeignUid) {
         this.uidGenerator = uidGenerator;
+        this.testFeignUid = testFeignUid;
     }
 
     @GetMapping("/nextId")
     public long nextId() {
         return uidGenerator.nextId();
+    }
+
+    @GetMapping("/test")
+    public long test(){
+        return testFeignUid.getUid();
     }
 }
