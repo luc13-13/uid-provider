@@ -1,0 +1,30 @@
+server:
+  port: 8888
+spring:
+  application:         # 服务名
+    name: uid-provider
+  devtools:            # 热部署工具，需要在idea中同时设置auto compiler
+    restart:
+      enabled: true
+      additional-paths: src/main/java, src/main/resources/application*
+  datasource:
+    url: jdbc:mysql://localhost:3306/uid-center?useSSL=false&useUnicode=true&allowPublicKeyRetrieval=true&serverTimezone=UTC&characterEncoding=UTF-8
+    username: root
+    password: luc123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8889/eureka/
+    register-with-eureka: true
+    fetch-registry: true
+
+logging:
+  config: classpath:./logback-spring.xml
+  level:
+    root: info
+  file:
+    path: ./${spring.application.name}/logs
