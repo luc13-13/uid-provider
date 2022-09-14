@@ -13,9 +13,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
  * @version: 1.0
  */
 @SpringBootApplication()
-@MapperScan("mapper/*.xml")
-//@EnableDiscoveryClient
-//@EnableFeignClients
+@MapperScan("com.lc.uid.provider.mapper")
 @EnableDiscoveryClient
 @EnableFeignClients
 public class Bootstrap {
