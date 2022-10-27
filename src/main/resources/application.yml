@@ -14,9 +14,22 @@ spring:
     username: root
     password: luc123456
     driver-class-name: com.mysql.cj.jdbc.Driver
-
-mybatis:
+  cloud:
+    nacos:
+      config:
+        server-addr: 127.0.0.1:8849
+        namespace: com-lc-dev
+        file-extension: yaml
+      discovery:
+        server-addr: 127.0.0.1:8849
+        namespace: com-lc-dev
+        register-enabled: true
+  config:
+    import: nacos:${spring.application.name}-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
+mybatis-plus:
   mapper-locations: classpath:mapper/*.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 
 #eureka:
 #  client:
@@ -26,8 +39,8 @@ mybatis:
 #    fetch-registry: true
 
 logging:
-  config: classpath:./logback-spring.xml
+  config: classpath:./logback-lc.xml
   level:
     root: info
   file:
-    path: ./uid-provider/logs
+    path: ./${spring.application.name}/logs
